@@ -1,6 +1,27 @@
-[toc]
+http://www.laurentluce.com/posts/category/python/
+https://github.com/python/cpython/tree/main/Objects
 
-## 列表
+| 数据结构/算法 | 语言内置                        | 内置库                                                       |
+| ------------- | ------------------------------- | ------------------------------------------------------------ |
+| 线性结构      | list(列表)/tuple(元组)          | array(数组，不常用)/collections.namedtuple                   |
+| 链式结构      |                                 | collections.deque(双端队列)                                  |
+| 字典结构      | dict(字典)                      | collections.Counter(计数器)/OrderedDict(有序字典)/defaultdict(默认字典) |
+| 集合结构      | set(集合)/frozenset(不可变集合) |                                                              |
+| 排序算法      | sorted                          |                                                              |
+| 二分算法      |                                 | bisect模块                                                   |
+| 堆算法        |                                 | heapq模块                                                    |
+| 优先级队列    |                                 | queue.PriorityQueue/heapq                                    |
+| 缓存算法      |                                 | functools.lru_cache(Least Recent Used, python3)/cache        |
+
+## 列表（https://github.com/python/cpython/blob/main/Objects/listobject.c）
+
+| 操作                                  | 平均时间复杂度 |
+| ------------------------------------- | -------------- |
+| list[index]                           | O(1)           |
+| list.append                           | O(1)           |
+| list.insert                           | O(n)           |
+| list.pop(index), default last element | O(1)           |
+| list.remove                           | O(n)           |
 
 ### 列表使用（常用的）
 
@@ -37,9 +58,8 @@
         output:[10, 9, 8, 7]
         ```
 
-        
 
-    - 1.不管是正索引还是负索引，在给范围的时候都会把最后的位置-1。2.step为负的时候，从右往左访问。
+**1.不管是正索引还是负索引，在给范围的时候都会把最后的位置-1。2.step为负的时候，从右往左访问。**
 
 - 列表的深浅拷贝
 
@@ -53,18 +73,14 @@
         alist[3][0] = 1
         print(alist)
         print(clist)
-        
+
         [1, 2, 3, ['a', 'b']]
         [1, 5, 3, ['a', 'b']]
         [1, 2, 3, [1, 'b']]
         [1, 5, 3, [1, 'b']]
-        
+
         # 说明，c浅拷贝的a的对象引用，当c改变的时候不会改变a，当a改变的时候会影响c
-        ```
 
-        
-
-    - ```python
         # 深拷贝
         alist = [1, 2, 3, ["a","b"]]
         clist = copy.deepcopy(alist)
@@ -74,15 +90,14 @@
         alist[3][0] = 1
         print(alist)
         print(clist)
-        
+
         [1, 2, 3, ['a', 'b']]
         [1, 5, 3, ['a', 'b']]
         [1, 2, 3, [1, 'b']]
         [1, 5, 3, ['a', 'b']]
-        
-        ```
 
-    - ```python
+        ​```
+        ​```python
         # 赋值语句
         alist = [1, 2, 3, ["a","b"]]
         clist = alist
@@ -92,12 +107,14 @@
         alist[3][0] = 1
         print(alist)
         print(clist)
-        
+
         [1, 5, 3, ['a', 'b']]
         [1, 5, 3, ['a', 'b']]
         [1, 5, 3, [1, 'b']]
         [1, 5, 3, [1, 'b']]
+
         ```
+
 
 ## 集合
 
@@ -158,7 +175,6 @@
         print(b_dict)
         ```
 
-        
 
 
 
