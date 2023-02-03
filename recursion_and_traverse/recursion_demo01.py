@@ -3,13 +3,16 @@ sys.setrecursionlimit(100)
 
 
 # # 例子1
-# def func(x):
-#     if x > 0:
-#         print(x)
-#         func(x - 1)
-#
-#
-# func(10)
+def func(x):
+    if x > 0:
+        print(x)
+        func(x - 1) # 标记func1
+        print(f"${x}$")
+        func(x - 1) # 标记func2
+        # print(f"={x}=")
+    else:
+        return 0
+func(3)
 #
 #
 # # 例子2

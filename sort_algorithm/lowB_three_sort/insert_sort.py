@@ -22,7 +22,7 @@ def insert_sort(li):
         # 在循环结束的位置，要么-1（已经到头了），要么li[j]（有序区域的值都比摸到的牌的值小，就是说你不用插入，往后插入）
         li[j + 1] = tmp
 
-li = list(range(10000))
+li = list(range(100))
 random.shuffle(li)
 # print(li)
 insert_sort(li)
