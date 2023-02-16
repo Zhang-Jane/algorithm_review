@@ -1,7 +1,7 @@
 from utils.decorator import cal_time
 
 # li = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-li = [1, 2, 3, 3, 34, 45, 78]
+li = [1, 2, 3, 3, 9, 45, 78]
 """
 二分查找的中点在于low或者high中间值的范围移动，从而缩小范围。中间值的计算就是low+high的中间值，比较的结束条仔在于low和high的位置是否重合。如果重合还找不到，说明没有这个值
 """
@@ -32,16 +32,20 @@ li = [1, 2, 3, 3, 34, 45, 78]
 def binary_search(li, target):
     if len(li) == 0:
         return -1
-    low = 0  # 起始的位置，往左移最后的位置
-    high = len(li)  # 往右移的最后的位置
-    while low < high:
-        mid = int(low + (high - low) / 2)  # low + high/2 - low/2等价于（(low + high) / 2）防止了 left 和 right 太大直接相加导致溢出
+    left = 0  # 起始的位置，往左移最后的位置
+    right = len(li) - 1  # 往右移的最后的位置
+    while left <= right:
+        # low + high/2 - low/2等价于（(low + high) / 2）防止了 left 和 right 太大直接相加导致溢出
+        mid = int(left + (right - left) / 2)
         if li[mid] == target:
-            low = mid + 1
+            # 往右边搜索最后要-1，往左不用
+            # right = mid - 1
+            left = mid + 1
         elif li[mid] > target:
-            high = mid
+            right = mid - 1
         elif li[mid] < target:
-            low = mid + 1
-    return low - 1
+            left = mid + 1
+    return left - 1
+
 
 print(binary_search(li, 3))

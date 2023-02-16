@@ -1,6 +1,6 @@
 import random
 
-li = [100, 2, 89, 98, 23, 76, 38, 85, 12, 9, 4]
+li = [10, 2, 89, 98, 23, 76, 38, 85, 12, 9, 4]
 # li = [100, 2]
 
 # 时间复杂度O(nlogn), 最坏的n2
@@ -15,8 +15,8 @@ def quick_sort(li, left, right):
     :return:
     """
 
-    if left < right and len(li) >= 2:
-        mid = partition1(li, left, right)
+    if left <= right:
+        mid = partition(li, left, right)
         quick_sort(li, left, mid - 1)
         quick_sort(li, mid + 1, right)
 
@@ -33,13 +33,20 @@ def partition(li, left, right):
     """
     tmp = li[left]
     while left < right:
+        # 假设最右数字是最大的数字，如果满足条件，就往左找，满足的条件进行下一步
         while left < right and li[right] >= tmp:
             right -= 1
+        # 如果右边的值的比tmp小，直接放到左边
         li[left] = li[right]
-        while left < right and li[left] <= tmp:
+        # 假设最左数字是最小的数字，如果满足条件，就往右找，不满足的条件进行下一步
+        while left < right and li[left] < tmp:
             left += 1
+        # 如果右边的值的比tmp大，直接放到右边
         li[right] = li[left]
+
+    # 最后把这个基准值放回到空缺的位置，然后返回
     li[left] = tmp
+
     return left
 
 

@@ -1,16 +1,16 @@
 def merge_sort(arr):
     """归并排序"""
-    if len(arr) == 1:
+    if len(arr) <= 1:
         return arr
     # 使用二分法将数列分两个
     mid = len(arr) // 2
     left = arr[:mid]
     right = arr[mid:]
     # 使用递归运算
-    return marge(merge_sort(left), merge_sort(right))
+    return merge(merge_sort(left), merge_sort(right))
 
 
-def marge(left, right):
+def merge(left, right):
     """排序合并两个数列"""
     result = []
     # 两个数列都有值

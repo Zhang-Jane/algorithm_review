@@ -62,19 +62,37 @@ def bfs(node):
         print('|', end=' ')
 
 
-def max_depth(root: Node):
-    if root is None:
+# def max_depth(root: Node):
+#     if root is None:
+#         return 0
+#     # print(f"1=={root.val}==1")
+#     left_max = max_depth(root.left)
+#     # print(f"2=={root.val}==2")
+#     right_max = max_depth(root.right)
+#     # print(f"3=={root.val}==3")
+#     return 1 + max(left_max, right_max)
+
+def traverse(root, level):
+    if root is Node:
+        return
+    # 前序位置
+    print(f"节点 {root} 在第 {level} 层")
+    traverse(root.left, level + 1)
+    traverse(root.right, level + 1)
+
+
+def count(root):
+    if root is Node:
         return 0
-    # print(f"1=={root.val}==1")
-    left_max = max_depth(root.left)
-    # print(f"2=={root.val}==2")
-    right_max = max_depth(root.right)
-    # print(f"3=={root.val}==3")
-    return 1 + max(left_max, right_max)
+    leftCount = count(root.left)
+    rightCount = count(root.right)
+    print(f"节点 {root} 的左子树有 {leftCount} 个节点，右子树有 {rightCount} 个节点")
+    return leftCount + rightCount + 1
 
 
 if __name__ == "__main__":
-    tree_list = [3, 9, 20, None, None, 15, 7]
+    tree_list = [3, 9, 20, 3, 7, 15, 7]
     tree = Tree()
     root = tree.construct(tree_list)
-    max_depth(root)
+    # max_depth(root)
+    count(root)

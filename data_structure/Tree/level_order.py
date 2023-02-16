@@ -31,9 +31,9 @@ class LevelOrder:
 
     def traverse(self, root: Node):
         self.queue.enqueue(root)
-        # 控制层级的遍历
+        # 控制层级的遍历，从上到下遍历二叉树的每一层
         while not self.queue.is_empty:
-            # 当前层的节点数
+            # 当前层的节点数，从左到右遍历每一层的每个节点
             q_size = self.queue.size()
             i = 0
             # 控制每一层的节点

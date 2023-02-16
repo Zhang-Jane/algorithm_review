@@ -6,10 +6,11 @@ sys.setrecursionlimit(100)
 def func(x):
     if x > 0:
         print(x)
-        func(x - 1) # 标记func1
-        print(f"${x}$")
-        func(x - 1) # 标记func2
+        m = func(x - 1) # 标记func1
+        # print(f"${x}$")
+        n = func(x - 1) # 标记func2
         # print(f"={x}=")
+        print(m,n)
     else:
         return 0
 func(3)
